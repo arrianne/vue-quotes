@@ -1,6 +1,11 @@
 <template id="">
-  <div class="row">
-
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-default">
+      <div class="panel-body quote">
+        <!-- the quote content should come from outside. this is the place where it will be rendered. -->
+        <slot></slot>
+      </div>
+    </div>
   </div>
 
   </div>
