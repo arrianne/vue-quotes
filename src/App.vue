@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+      <app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></app-header>
       <!-- listen to quote added on this selector and then execute a new quote (can be called anything) -->
       <!-- i do get some data passed into newQuote from new quote vue file in the createNew function -->
       <app-new-quote @quoteAdded="newQuote"></app-new-quote>
@@ -16,7 +17,7 @@
 <script>
    import QuoteGrid from './components/QuoteGrid.vue';
    import NewQuote from './components/NewQuote.vue';
-   import NewQuote from './components/NewQuote.vue';
+   import Header from './components/Header.vue';
 
    export default {
        data: function () {
@@ -29,7 +30,11 @@
        },
        methods: {
            newQuote(quote) {
+             if(this.quotes.length >= this.maxQuotes){
+               return alert('Please delete a quote first!')
+             }
                this.quotes.push(quote);
+
            },
            deleteQuote(index) {
                this.quotes.splice(index, 1);
@@ -38,10 +43,12 @@
        components: {
            appQuoteGrid: QuoteGrid,
            appNewQuote: NewQuote,
-           appNewHeader: Header
+           appHeader: Header
        }
    }
 </script>
+
+
 
 <style>
 </style>
