@@ -4,7 +4,12 @@
       <!-- i do get some data passed into newQuote from new quote vue file in the createNew function -->
       <app-new-quote @quoteAdded="newQuote"></app-new-quote>
       <!-- passing the array to the quote grid -->
-      <app-quote-grid :quotes="quotes"></app-quote-grid>
+      <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
+      <div class="row">
+           <div class="col-sm-12 text-center">
+               <div class="alert alert-info">Info: Click on a Quote to delete it!</div>
+           </div>
+       </div>
     </div>
 </template>
 
@@ -23,7 +28,10 @@
        },
        methods: {
            newQuote(quote) {
-              this.quotes.push(quote);
+               this.quotes.push(quote);
+           },
+           deleteQuote(index) {
+               this.quotes.splice(index, 1);
            }
        },
        components: {

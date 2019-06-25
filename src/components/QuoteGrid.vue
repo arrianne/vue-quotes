@@ -1,9 +1,8 @@
 <template id="">
   <div class="row">
 <!-- the holder of the content for single quotes. I can loop through them to render the single quote for each loop and pass the content to it. -->
-    <app-quote v-for="quote in quotes">
-      {{ quote }}
-    </app-quote>
+<!-- native modifier - tells vue js to react to a click on that component if it happens on the native element of that componenet. -->
+    <app-quote v-for="(quote, index) in quotes" @click.native="deleteQuote(index)">{{ quote }}</app-quote>
   </div>
 
   </div>
@@ -19,6 +18,11 @@ import Quote from './Quote.vue';
     // registering the single quote vue file.
     components: {
       appQuote: Quote
+    },
+    methods: {
+      deleteQuote(index) {
+        this.$emit('quoteDeleted', index);
+      }
     }
   }
 </script>
