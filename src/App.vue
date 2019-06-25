@@ -16,6 +16,7 @@
 <script>
    import QuoteGrid from './components/QuoteGrid.vue';
    import NewQuote from './components/NewQuote.vue';
+   import NewQuote from './components/NewQuote.vue';
 
    export default {
        data: function () {
@@ -36,7 +37,8 @@
        },
        components: {
            appQuoteGrid: QuoteGrid,
-           appNewQuote: NewQuote
+           appNewQuote: NewQuote,
+           appNewHeader: Header
        }
    }
 </script>
